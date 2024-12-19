@@ -15,8 +15,8 @@ st.set_page_config(page_title="Interior Design Consultation", layout="wide")
 
 
 
-os.getenv("GITHUB_TOKEN") == st.secrets["GITHUB_TOKEN"]
-os.getenv("NVIDIA_2") == st.secrets["NVIDIA_2"]
+# os.getenv("GITHUB_TOKEN") == st.secrets["GITHUB_TOKEN"]
+# os.getenv("NVIDIA_2") == st.secrets["NVIDIA_2"]
 # NVIDIA_API_KEY = os.getenv("NVIDIA_2")
 # if not API_KEY or not NVIDIA_API_KEY:
 #     st.error("Missing required environment variables. Please check your .env file.")
@@ -35,14 +35,14 @@ if "initialized" not in st.session_state:
 # Constants
 DESIGN_QUESTIONS = [
     "What would you like to see in your area?",
-    # "What mood or atmosphere do you want to create in your space?",
+    "What mood or atmosphere do you want to create in your space?",
     "What kind of ambience do you want to offer to others (e.g., visitors, customers, public)?",
-    # "What areas are you wanting to create within this space?",
-    # "What colors are you drawn to?",
-    # "Would you like assistance with selecting the right colors for your space?",
-    # "Where do you envision this space evolving in the next 2, 5, or 10 years?",
-    # "What are your main design goals?",
-    # "Are there any specific features you would like included?"
+    "What areas are you wanting to create within this space?",
+    "What colors are you drawn to?",
+    "Would you like assistance with selecting the right colors for your space?",
+    "Where do you envision this space evolving in the next 2, 5, or 10 years?",
+    "What are your main design goals?",
+    "Are there any specific features you would like included?"
 ]
 
 TOTAL_QUESTIONS = len(DESIGN_QUESTIONS)
