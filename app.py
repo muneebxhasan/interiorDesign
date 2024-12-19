@@ -191,7 +191,8 @@ def process_response(user_input: str):
         # Generate and display image
         try:
             image_base64 = generate_image(final_prompt)
-            st.session_state.final_image = image_base64
+            # st.session_state.final_image = image_base64
+            st.image(image_base64, caption="Generated Interior Design Visualization", use_column_width=True)
             st.session_state.completed = True
         except Exception as e:
             st.error(f"Error generating image: {str(e)}")
@@ -236,7 +237,7 @@ if st.session_state.completed and hasattr(st.session_state, 'final_image'):
     st.markdown("### 🎨 Your Design Visualization")
     image_data = base64.b64decode(st.session_state.final_image)
     image = Image.open(BytesIO(image_data))
-    st.image(image, caption="Generated Interior Design Visualization", use_column_width=True)
+    st.image(image, caption="Generated Interior Design Visualization")
     
     if st.button("Start New Consultation"):
         for key in st.session_state.keys():
