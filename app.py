@@ -191,8 +191,7 @@ def process_response(user_input: str):
         # Generate and display image
         try:
             image_base64 = generate_image(final_prompt)
-            # st.session_state.final_image = image_base64
-            st.image(image_base64, caption="Generated Interior Design Visualization", use_column_width=True)
+            st.session_state.final_image = image_base64
             st.session_state.completed = True
         except Exception as e:
             st.error(f"Error generating image: {str(e)}")
@@ -226,8 +225,7 @@ progress.progress((st.session_state.current_question) / TOTAL_QUESTIONS)
 
 # Input field
 if not st.session_state.completed:
-    user_input = st.text_input("Your response:", key="user_input")
-    if st.button("Send") and user_input:
+    if user_input := st.chat_input("Your response:"):
         process_response(user_input)
         # st.experimental_rerun()
         st.rerun()
@@ -240,6 +238,6 @@ if st.session_state.completed and hasattr(st.session_state, 'final_image'):
     st.image(image, caption="Generated Interior Design Visualization")
     
     if st.button("Start New Consultation"):
-        for key in st.session_state.keys():
+        for key in list(st.session_state.keys()):
             del st.session_state[key]
         st.experimental_rerun()
